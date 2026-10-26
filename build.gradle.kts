@@ -25,7 +25,7 @@ repositories {
   maven("https://repo.codemc.io/repository/maven-releases/")
   maven("https://repo.codemc.io/repository/maven-snapshots/")
   maven("https://maven.enginehub.org/repo/") // WorldGuard
-  maven("https://repo.opencollab.dev/maven-snapshots/") // Geyser / Floodgate
+  maven("https://repo.opencollab.dev/main/") // Geyser / Floodgate
 }
 
 dependencies {
