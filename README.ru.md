@@ -34,6 +34,11 @@
   </p>
 </div>
 
+## Staff GUI, punishment animations and holograms
+
+See [presentation modules](docs/presentation.md) for `/shard gui`, cosmetic punishment actions,
+permissions and persistent statistics holograms.
+
 ## Что такое Shard
 
 Shard - combat-античит с открытым исходным кодом для Minecraft-серверов. AI-модель проверяет движения мыши игрока и обнаруживает killaura и aim assist.

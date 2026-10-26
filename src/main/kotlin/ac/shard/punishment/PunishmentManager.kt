@@ -38,6 +38,7 @@ import ac.shard.database.Violation
 import ac.shard.detection.EffectiveSettings
 import ac.shard.mitigation.MitigationSkip
 import ac.shard.player.ShardPlayer
+import ac.shard.presentation.PunishmentAnimations
 import ac.shard.scheduler.SchedulerService
 import ac.shard.utils.Message
 import ac.shard.utils.Messages
@@ -60,6 +61,7 @@ class PunishmentManager(
   private val scheduler: SchedulerService,
   private val events: ShardEvents,
   private val mitigationSkip: MitigationSkip,
+  private val animations: PunishmentAnimations,
 ) {
   private val flagLocks = Array(LOCK_STRIPES) { Any() }
 
@@ -160,6 +162,13 @@ class PunishmentManager(
         onMain(next) { adventure.players().sendMessage(component) }
       }
       is PunishAction.Wait -> wait(action, next)
+      is PunishAction.Animation -> {
+        val style = action.style
+        if (style == null) {
+          logger.warning("[Punish] Unknown animation style; use sparks or lightning")
+          next()
+        } else animations.play(flag.player.player, style, next)
+      }
       is PunishAction.Console -> {
         val command = consoleCommand(action, flag, step.vl)
         onMain(next) { plugin.server.dispatchCommand(plugin.server.consoleSender, command) }

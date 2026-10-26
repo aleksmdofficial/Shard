@@ -28,6 +28,7 @@ import ac.shard.debug.DebugManager
 import ac.shard.mitigation.MitigationRuntime
 import ac.shard.monitor.MonitorServices
 import ac.shard.network.NetworkServices
+import ac.shard.presentation.PresentationRuntime
 import ac.shard.scheduler.SchedulerService
 import ac.shard.server.AIServerProvider
 
@@ -43,9 +44,11 @@ class ShardReloader(
   private val network: NetworkServices,
   private val scheduler: SchedulerService,
   private val events: ShardEvents,
+  private val presentation: PresentationRuntime,
 ) {
   fun reload() {
     configManager.reloadConfig()
+    presentation.reload()
     VerdictResolver.forgetReports()
     localeManager.reload()
     debugManager.reload()

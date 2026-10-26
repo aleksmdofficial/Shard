@@ -32,6 +32,7 @@ import ac.shard.packet.PacketSendListener
 import ac.shard.player.ExemptManager
 import ac.shard.player.PlayerDataManager
 import ac.shard.player.PlayerThreadRefreshListener
+import ac.shard.presentation.PresentationRuntime
 import ac.shard.scheduler.SchedulerService
 import ac.shard.server.AIServerProvider
 import ac.shard.telemetry.TelemetryService
@@ -66,6 +67,7 @@ constructor(
   private val http: ShardHttp,
   private val logger: Logger,
   private val refreshListener: PlayerThreadRefreshListener,
+  private val presentation: PresentationRuntime,
 ) {
   fun enable() {
     databaseManager.start()
@@ -88,9 +90,11 @@ constructor(
     scheduler.runAsync { network.start() }
     telemetryService.start()
     commandManager.startCommands()
+    presentation.enable()
   }
 
   fun disable() {
+    runCatching { presentation.disable() }
     runCatching { PacketEvents.getAPI().eventManager.unregisterListener(packetListener) }
     runCatching { PacketEvents.getAPI().eventManager.unregisterListener(sendListener) }
     runCatching { PacketEvents.getAPI().eventManager.unregisterListener(monitor.slotObserver) }
