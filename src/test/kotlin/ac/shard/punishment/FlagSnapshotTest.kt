@@ -76,6 +76,7 @@ class FlagSnapshotTest {
         scheduler = scheduler,
         events = mockk(relaxed = true),
         mitigationSkip = mockk(relaxed = true),
+        animations = mockk(relaxed = true),
       )
 
     manager.handleFlag(shardPlayer, "AI", emptySet(), "debug")

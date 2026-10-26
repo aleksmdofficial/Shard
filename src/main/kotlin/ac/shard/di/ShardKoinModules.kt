@@ -147,6 +147,11 @@ import ac.shard.player.PlayerDirectory
 import ac.shard.player.PlayerPersistence
 import ac.shard.player.PlayerThreadRefreshListener
 import ac.shard.player.ShardPlayerFactory
+import ac.shard.presentation.PresentationCommand
+import ac.shard.presentation.PresentationRuntime
+import ac.shard.presentation.PunishmentAnimations
+import ac.shard.presentation.StaffMenu
+import ac.shard.presentation.StatisticsHolograms
 import ac.shard.punishment.PunishmentManager
 import ac.shard.punishment.cloud.PunishmentSync
 import ac.shard.region.RegionProvider
@@ -268,6 +273,10 @@ private fun coreModule(plugin: Shard) = module {
   singleOf(::NetworkServices)
   singleOf(::ShardReloader)
   singleOf(::ShardCore)
+  singleOf(::PresentationRuntime)
+  singleOf(::PunishmentAnimations)
+  singleOf(::StaffMenu)
+  singleOf(::StatisticsHolograms)
 }
 
 private fun monitorModule() = module {
@@ -327,6 +336,7 @@ private fun commandModule() = module {
 }
 
 private fun adminCommandsModule() = module {
+  singleOf(::PresentationCommand).bind<ShardCommand>()
   singleOf(::AlertsCommand).bind<ShardCommand>()
   singleOf(::BrandsCommand).bind<ShardCommand>()
   singleOf(::ConnectCommand).bind<ShardCommand>()

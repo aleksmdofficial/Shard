@@ -12,6 +12,8 @@
 #   [broadcast] <text>  message everyone online
 #   [reset]             reset this group's flag count
 #   [wait] <time>       pause before the next action (10s, 40t, 500ms)
+#   [animation] sparks cosmetic effect, then continue (also: lightning)
+#                      duration is configured in presentation.yml
 #   Any other line runs as a console command.
 #
 # commands: named command sets, local to this server. The panel sees only their names.

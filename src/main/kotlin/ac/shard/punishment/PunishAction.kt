@@ -17,6 +17,7 @@
  */
 package ac.shard.punishment
 
+import ac.shard.presentation.AnimationStyle
 import java.util.Locale
 
 sealed interface PunishAction {
@@ -32,6 +33,8 @@ sealed interface PunishAction {
 
   data class Console(val template: String) : PunishAction
 
+  data class Animation(val style: AnimationStyle?) : PunishAction
+
   companion object {
     private const val BROADCAST = "[broadcast] "
     private const val WAIT = "[wait]"
@@ -43,6 +46,9 @@ sealed interface PunishAction {
         lower == "[alert]" -> Alert
         lower == "[log]" -> Log
         lower == "[reset]" -> Reset
+        lower == "[animation]" -> Animation(AnimationStyle.SPARKS)
+        lower.startsWith("[animation] ") ->
+          Animation(AnimationStyle.parse(trimmed.substringAfter(']')))
         lower.startsWith(BROADCAST) -> Broadcast(trimmed.substring(BROADCAST.length))
         lower.startsWith(WAIT) -> waitOf(trimmed)
         else -> Console(trimmed)

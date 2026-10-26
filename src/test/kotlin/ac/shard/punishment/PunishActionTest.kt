@@ -17,11 +17,22 @@
  */
 package ac.shard.punishment
 
+import ac.shard.presentation.AnimationStyle
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 import org.junit.jupiter.api.Test
 
 class PunishActionTest {
+
+  @Test
+  fun `animation actions select styles and never become console commands`() {
+    assertEquals(PunishAction.Animation(AnimationStyle.SPARKS), PunishAction.parse("[animation]"))
+    assertEquals(
+      PunishAction.Animation(AnimationStyle.LIGHTNING),
+      PunishAction.parse(" [ANIMATION] lightning "),
+    )
+    assertEquals(PunishAction.Animation(null), PunishAction.parse("[animation] typo"))
+  }
 
   @Test
   fun `built-in actions ignore case and surrounding spaces`() {

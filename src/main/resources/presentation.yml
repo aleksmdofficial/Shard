@@ -1,0 +1,21 @@
+# GUI labels follow config.yml locale (en/ru). No extra plugins are required.
+gui:
+  enabled: true
+
+animations:
+  enabled: true
+  # Delay before continuing the punishment sequence; clamped to 1..100 ticks.
+  duration-ticks: 40
+
+# Public, aggregate statistics. Holograms currently require Bukkit/Paper (not Folia).
+# Enable, reload, then stand at the desired position and use /shard hologram create spawn.
+# Locations are stored separately in holograms.yml. No chunks are force-loaded.
+holograms:
+  enabled: false
+  # Top line starts two blocks above the position used by the create command.
+  # Maximum 12 lines; placeholders: {online}, {model}, {flags_24h}.
+  lines:
+    - '&b&lShard'
+    - '&fOnline: &b{online}'
+    - '&fFlags (24h): &e{flags_24h}'
+    - '&fModel: &a{model}'

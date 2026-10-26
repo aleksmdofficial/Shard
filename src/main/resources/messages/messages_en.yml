@@ -336,6 +336,9 @@ stats:
   inference-off: "<prefix> <gray>The AI connection is turned off.</gray>"
 
 help:
+  - " <color:#00b4db>/<command> gui</color> <gray>- Open the staff menu</gray>"
+  - " <color:#00b4db>/<command> animation sparks|lightning</color> <gray>- Preview an effect on yourself</gray>"
+  - " <color:#00b4db>/<command> hologram create|delete|list [id]</color> <gray>- Manage public statistics holograms</gray>"
   - "<gradient:#8e9eab:#eef2f3>-------- [ Shard ] --------</gradient>"
   - " <color:#00b4db>/<command> alerts</color> <gray>- Toggle violation alerts</gray>"
   - " <color:#00b4db>/<command> brands</color> <gray>- Toggle client brand notifications</gray>"

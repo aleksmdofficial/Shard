@@ -32,7 +32,8 @@ dependencies {
   // Bukkit APIs
   compileOnly(libs.paper.api)
   compileOnly(libs.worldguard)
-  compileOnly(libs.floodgate.api)
+  // Shard only calls the API's UUID predicate. Floodgate supplies its own runtime dependencies.
+  compileOnly(libs.floodgate.api) { isTransitive = false }
 
   implementation(libs.shard.api)
 
@@ -250,6 +251,19 @@ bukkit {
     )
 
   permissions {
+    register("shard.gui") {
+      description =
+        "Allows opening the staff GUI; actions require their existing command permissions"
+      default = Permission.Default.OP
+    }
+    register("shard.hologram.manage") {
+      description = "Allows creating, listing and deleting public statistics holograms"
+      default = Permission.Default.OP
+    }
+    register("shard.animation.preview") {
+      description = "Allows previewing cosmetic punishment effects on yourself"
+      default = Permission.Default.OP
+    }
     register("shard.help") {
       description = "Allows usage of the help command"
       default = Permission.Default.OP

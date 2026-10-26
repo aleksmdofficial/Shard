@@ -336,6 +336,9 @@ stats:
   inference-off: "<prefix> <gray>Подключение к AI выключено.</gray>"
 
 help:
+  - " <color:#00b4db>/<command> gui</color> <gray>- Открыть меню персонала</gray>"
+  - " <color:#00b4db>/<command> animation sparks|lightning</color> <gray>- Проверить эффект на себе</gray>"
+  - " <color:#00b4db>/<command> hologram create|delete|list [id]</color> <gray>- Управление голограммами статистики</gray>"
   - "<gradient:#8e9eab:#eef2f3>-------- [ Shard ] --------</gradient>"
   - " <color:#00b4db>/<command> alerts</color> <gray>- Включить/выключить оповещения о нарушениях</gray>"
   - " <color:#00b4db>/<command> brands</color> <gray>- Включить/выключить оповещения о клиенте игрока</gray>"
